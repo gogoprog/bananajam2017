@@ -1,6 +1,6 @@
 import gengine.*;
 import gengine.math.*;
-import gengine.components.*;
+import systems.*;
 
 class ExitSystem extends System
 {
@@ -22,18 +22,15 @@ class Application
 {
     public static function init()
     {
-        Gengine.setWindowSize(new IntVector2(800, 600));
-        Gengine.setWindowTitle("01-animated_sprite_2d");
+        Gengine.setWindowSize(new IntVector2(512, 512));
+        Gengine.setWindowTitle("bananajam2017");
     }
 
     public static function start(engine:Engine)
     {
         engine.addSystem(new ExitSystem(), 0);
-
-        var e = new Entity();
-        e.add(new StaticSprite2D());
-        e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("banana.png", true));
-        engine.addEntity(e);
+        engine.addSystem(new FallSystem(), 0);
+        engine.addSystem(new SpawnSystem(), 0);
 
         Gengine.getRenderer().getDefaultZone().setFogColor(new Color(1,1,1,1));
     }
