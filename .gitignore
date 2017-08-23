@@ -1,0 +1,8 @@
+*.log
+generated
+callgrind*
+packed-*
+vgcore*
+gengine
+/undefined
+*.autosave.scml
