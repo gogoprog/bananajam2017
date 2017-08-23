@@ -2,6 +2,7 @@ import gengine.*;
 import gengine.math.*;
 import systems.*;
 import components.*;
+import gengine.components.*;
 
 class ExitSystem extends System
 {
@@ -44,12 +45,25 @@ class Application
         e = createSpawner();
         engine.addEntity(e);
         e.position = new Vector3(200, 200, 0);
+
+        e = createTree();
+        engine.addEntity(e);
+        e.position = new Vector3(0, 26, 0);
     }
 
     private static function createSpawner():Entity
     {
         var e = new Entity();
         e.add(new Spawner());
+        return e;
+    }
+
+    private static function createTree():Entity
+    {
+        var e = new Entity();
+        e.add(new StaticSprite2D());
+        e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("banana-tree.png", true));
+        e.scale = new Vector3(2.2, 2.2, 1);
         return e;
     }
 }
