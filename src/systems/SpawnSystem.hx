@@ -56,6 +56,7 @@ class SpawnSystem extends ListIteratingSystem<SpawnerNode>
         e.add(new StaticSprite2D());
         e.add(new Fall());
         e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("banana.png", true));
+        e.get(StaticSprite2D).setLayer(2);
         e.scale = new Vector3(0.25, 0.25, 0.25);
         e.position = position;
         engine.addEntity(e);

@@ -38,6 +38,9 @@ class Application
 
         var e:Entity;
 
+        e = createBackground();
+        engine.addEntity(e);
+
         e = createSpawner();
         engine.addEntity(e);
         e.position = new Vector3(-200, 200, 0);
@@ -63,7 +66,17 @@ class Application
         var e = new Entity();
         e.add(new StaticSprite2D());
         e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("banana-tree.png", true));
+        e.get(StaticSprite2D).setLayer(1);
         e.scale = new Vector3(2.2, 2.2, 1);
+        return e;
+    }
+
+    private static function createBackground():Entity
+    {
+        var e = new Entity();
+        e.add(new StaticSprite2D());
+        e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("background.png", true));
+        e.get(StaticSprite2D).setLayer(0);
         return e;
     }
 }
