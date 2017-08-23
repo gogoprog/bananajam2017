@@ -3,11 +3,9 @@ package systems;
 import gengine.*;
 import gengine.math.*;
 import gengine.components.*;
-import systems.*;
 import components.*;
 
 import ash.tools.ListIteratingSystem;
-import ash.core.NodeList;
 
 class FallNode extends Node<FallNode>
 {
@@ -32,11 +30,17 @@ class FallSystem extends ListIteratingSystem<FallNode>
 
     private function updateNode(node:FallNode, dt:Float):Void
     {
-
+        node.fall.time += dt;
+        var t = node.fall.time;
+        var y = node.fall.startY - 981 * t * t * 0.5;
+        var p = node.entity.position;
+        node.entity.setPosition(new Vector3(p.x, y, p.z));
     }
 
     private function onNodeAdded(node:FallNode)
     {
+        node.fall.startY = node.entity.position.y;
+        node.fall.time = 0;
     }
 
     private function onNodeRemoved(node:FallNode)
