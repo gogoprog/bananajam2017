@@ -150,4 +150,18 @@ class Application
             }
             );
     }
+
+    public static function gameOver()
+    {
+        engine.updateComplete.add(function(){
+            engine.removeAllEntities();
+
+            engine.removeSystem(engine.getSystem(SpawnSystem));
+            engine.removeSystem(engine.getSystem(FallSystem));
+            engine.removeSystem(engine.getSystem(GrowSystem));
+            engine.removeSystem(engine.getSystem(ShakeSystem));
+            pages.showPage(".menu");
+            });
+
+    }
 }

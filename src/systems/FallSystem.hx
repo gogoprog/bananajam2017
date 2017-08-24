@@ -78,6 +78,10 @@ class FallSystem extends ListIteratingSystem<FallNode>
                     basket.add(shaker);
                 }
 
+                if(basket.get(Basket).life <= 0)
+                {
+                    Application.gameOver();
+                }
             }
         }
     }
