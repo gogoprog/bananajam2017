@@ -40,7 +40,9 @@ class ShakeSystem extends ListIteratingSystem<ShakerNode>
 
         if(node.shaker.time > 1)
         {
-
+            var e = node.entity;
+            e.remove(Shaker);
+            e.add(new Fall());
         }
     }
 
