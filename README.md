@@ -1,4 +1,4 @@
-## BananaCatch
+## BananaAffair
 
 Entry for the Banana Jam 2017 https://itch.io/jam/banana
 
