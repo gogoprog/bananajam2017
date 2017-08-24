@@ -16,6 +16,7 @@ class FallNode extends Node<FallNode>
 class FallSystem extends ListIteratingSystem<FallNode>
 {
     private var engine:Engine;
+    private var basket:Entity;
 
     public function new()
     {
@@ -26,6 +27,8 @@ class FallSystem extends ListIteratingSystem<FallNode>
     {
         super.addToEngine(engine);
         this.engine = engine;
+
+        basket = cast engine.getEntityByName("basket");
     }
 
     private function updateNode(node:FallNode, dt:Float):Void
@@ -41,6 +44,17 @@ class FallSystem extends ListIteratingSystem<FallNode>
             AudioSystem.instance.playSound("fail");
             engine.removeEntity(node.entity);
         }
+
+        p = node.entity.position;
+        var bp = basket.position;
+        var bs = 32;
+
+        if(p.y < bp.y + bs && p.y > bp.y - bs && p.x < bp.x + bs && p.x > bp.x - bs)
+        {
+            engine.removeEntity(node.entity);
+            AudioSystem.instance.playSound("pick");
+            basket.get(Basket).score += 100;
+        }
     }
 
     private function onNodeAdded(node:FallNode)
@@ -53,6 +67,4 @@ class FallSystem extends ListIteratingSystem<FallNode>
     private function onNodeRemoved(node:FallNode)
     {
     }
-
-
 }

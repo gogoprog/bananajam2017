@@ -43,6 +43,7 @@ class BasketSystem extends ListIteratingSystem<BasketNode>
 
     private function onNodeAdded(node:BasketNode)
     {
+        node.basket.score = 0;
     }
 
     private function onNodeRemoved(node:BasketNode)
