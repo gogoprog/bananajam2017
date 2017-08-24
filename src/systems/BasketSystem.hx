@@ -4,7 +4,7 @@ import gengine.*;
 import gengine.math.*;
 import gengine.components.*;
 import components.*;
-
+import js.jquery.*;
 import ash.tools.ListIteratingSystem;
 
 class BasketNode extends Node<BasketNode>
@@ -44,6 +44,10 @@ class BasketSystem extends ListIteratingSystem<BasketNode>
     private function onNodeAdded(node:BasketNode)
     {
         node.basket.score = 0;
+        node.basket.life = 5;
+
+        (new JQuery(".score")).text(Std.string(node.basket.score));
+        (new JQuery(".life")).text(Std.string(node.basket.life));
     }
 
     private function onNodeRemoved(node:BasketNode)

@@ -28,6 +28,7 @@ class Application
 {
     private static var engine:Engine;
     private static var pages:PagesSet;
+    private static var basket:Entity;
 
     public static function init()
     {
@@ -53,10 +54,7 @@ class Application
         engine.addEntity(e);
         e.position = new Vector3(0, 26, 0);
 
-        e = createBasket();
-        e.name = "basket";
-        engine.addEntity(e);
-        e.position = new Vector3(0, -200, 0);
+        basket = createBasket();
 
         createSpawner(-100, 200);
         createSpawner(100, 200);
@@ -68,9 +66,6 @@ class Application
         createSpawner(-20, 230);
 
         engine.addSystem(new ExitSystem(), 0);
-        engine.addSystem(new FallSystem(), 0);
-        engine.addSystem(new GrowSystem(), 0);
-        engine.addSystem(new ShakeSystem(), 0);
         engine.addSystem(new AudioSystem(), 0);
         engine.addSystem(new BasketSystem(), 0);
 
@@ -104,6 +99,8 @@ class Application
         e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("crate.png", true));
         e.get(StaticSprite2D).setLayer(1);
         e.scale = new Vector3(1, 1, 1);
+        e.name = "basket";
+        e.position = new Vector3(0, -200, 0);
         return e;
     }
 
@@ -140,7 +137,11 @@ class Application
         new JQuery(".menu").click(
             function(e)
             {
+                engine.addEntity(basket);
                 engine.addSystem(new SpawnSystem(), 0);
+                engine.addSystem(new FallSystem(), 0);
+                engine.addSystem(new GrowSystem(), 0);
+                engine.addSystem(new ShakeSystem(), 0);
                 pages.showPage(".hud");
             }
             );

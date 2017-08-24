@@ -4,7 +4,7 @@ import gengine.*;
 import gengine.math.*;
 import gengine.components.*;
 import components.*;
-
+import js.jquery.*;
 import ash.tools.ListIteratingSystem;
 
 class FallNode extends Node<FallNode>
@@ -57,10 +57,13 @@ class FallSystem extends ListIteratingSystem<FallNode>
             {
                 AudioSystem.instance.playSound("pick");
                 basket.get(Basket).score += 100;
+                (new JQuery(".score")).text(Std.string(basket.get(Basket).score));
             }
             else
             {
                 AudioSystem.instance.playSound("hurt");
+                basket.get(Basket).life -= 1;
+                (new JQuery(".life")).text(Std.string(basket.get(Basket).life));
             }
         }
     }
