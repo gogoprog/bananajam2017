@@ -4,6 +4,9 @@ import gengine.graphics.*;
 import systems.*;
 import components.*;
 import gengine.components.*;
+import js.jquery.*;
+import js.UIPages;
+import js.PagesSet;
 
 class ExitSystem extends System
 {
@@ -24,12 +27,13 @@ class ExitSystem extends System
 class Application
 {
     private static var engine:Engine;
-    private static var musicSource:SoundSource;
+    private static var pages:PagesSet;
 
     public static function init()
     {
         Gengine.setWindowSize(new IntVector2(512, 512));
         Gengine.setWindowTitle("bananajam2017");
+        Gengine.setGuiFilename("gui/gui.html");
     }
 
     public static function start(_engine:Engine)
@@ -65,7 +69,6 @@ class Application
 
         engine.addSystem(new ExitSystem(), 0);
         engine.addSystem(new FallSystem(), 0);
-        engine.addSystem(new SpawnSystem(), 0);
         engine.addSystem(new GrowSystem(), 0);
         engine.addSystem(new ShakeSystem(), 0);
         engine.addSystem(new AudioSystem(), 0);
@@ -126,5 +129,20 @@ class Application
         viewport.setCamera(e.get(Camera));
         Gengine.getRenderer().setViewport(0, viewport);
         return e;
+    }
+
+    public static function onGuiLoaded()
+    {
+        pages = UIPages.createSet(new JQuery("#body"));
+
+        pages.showPage(".menu");
+
+        new JQuery(".menu").click(
+            function(e)
+            {
+                engine.addSystem(new SpawnSystem(), 0);
+                pages.showPage(".hud");
+            }
+            );
     }
 }
