@@ -11,6 +11,7 @@ class FallNode extends Node<FallNode>
 {
     public var sprite:StaticSprite2D;
     public var fall:Fall;
+    public var banana:Banana;
 }
 
 class FallSystem extends ListIteratingSystem<FallNode>

@@ -53,6 +53,7 @@ class SpawnSystem extends ListIteratingSystem<SpawnerNode>
     private function spawn(position:Vector3):Void
     {
         var e = new Entity();
+        e.add(new Banana());
         e.add(new StaticSprite2D());
         e.add(new Grower());
         var ss:StaticSprite2D = e.get(StaticSprite2D);
@@ -63,5 +64,11 @@ class SpawnSystem extends ListIteratingSystem<SpawnerNode>
         e.scale = new Vector3(0.25, 0.25, 0.25);
         e.position = position;
         engine.addEntity(e);
+
+        if(Std.random(10) == 1)
+        {
+            e.get(Banana).good = false;
+            e.get(StaticSprite2D).setColor(new Color(1, 0.2, 0.2, 1));
+        }
     }
 }
