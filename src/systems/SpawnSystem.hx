@@ -43,7 +43,7 @@ class SpawnSystem extends ListIteratingSystem<SpawnerNode>
     private function onNodeAdded(node:SpawnerNode)
     {
         node.spawner.time = 0;
-        node.spawner.timeLeft = 1;
+        node.spawner.timeLeft = Math.random() * 2;
     }
 
     private function onNodeRemoved(node:SpawnerNode)

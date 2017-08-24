@@ -23,6 +23,7 @@ class ExitSystem extends System
 class Application
 {
     private static var engine:Engine;
+    private static var musicSource:SoundSource;
 
     public static function init()
     {
@@ -42,7 +43,6 @@ class Application
 
         Gengine.getRenderer().getDefaultZone().setFogColor(new Color(1,1,1,1));
 
-
         var e:Entity;
 
         e = createBackground();
@@ -56,6 +56,20 @@ class Application
         createSpawner(100, 180);
         createSpawner(80, 120);
         createSpawner(-120, 90);
+        createSpawner(-80, 70);
+        createSpawner(50, 70);
+        createSpawner(20, 210);
+        createSpawner(-20, 210);
+
+        e = new Entity();
+        musicSource = new SoundSource();
+        musicSource.setSoundType("Music");
+        musicSource.setGain(0.4);
+        e.add(musicSource);
+
+        var s = Gengine.getResourceCache().getSound("ramones.ogg", true);
+        s.setLooped(true);
+        musicSource.play1(s);
     }
 
     private static function createSpawner(x, y):Entity
