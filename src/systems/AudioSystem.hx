@@ -30,6 +30,7 @@ class AudioSystem extends System
         add("fall");
         add("pick");
         add("fail");
+        add("hurt");
 
         instance = this;
     }

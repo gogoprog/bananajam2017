@@ -53,8 +53,15 @@ class FallSystem extends ListIteratingSystem<FallNode>
         if(p.y < bp.y + bs && p.y > bp.y - bs && p.x < bp.x + bs && p.x > bp.x - bs)
         {
             engine.removeEntity(node.entity);
-            AudioSystem.instance.playSound("pick");
-            basket.get(Basket).score += 100;
+            if(node.banana.good)
+            {
+                AudioSystem.instance.playSound("pick");
+                basket.get(Basket).score += 100;
+            }
+            else
+            {
+                AudioSystem.instance.playSound("hurt");
+            }
         }
     }
 

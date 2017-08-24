@@ -68,7 +68,7 @@ class SpawnSystem extends ListIteratingSystem<SpawnerNode>
         if(Std.random(10) == 1)
         {
             e.get(Banana).good = false;
-            e.get(StaticSprite2D).setColor(new Color(1, 0.2, 0.2, 1));
+            e.get(StaticSprite2D).setColor(new Color(0.9, 0.1, 0.2, 1));
         }
     }
 }
