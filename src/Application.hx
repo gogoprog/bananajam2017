@@ -33,6 +33,8 @@ class Application
         engine.addSystem(new ExitSystem(), 0);
         engine.addSystem(new FallSystem(), 0);
         engine.addSystem(new SpawnSystem(), 0);
+        engine.addSystem(new GrowSystem(), 0);
+        engine.addSystem(new ShakeSystem(), 0);
 
         Gengine.getRenderer().getDefaultZone().setFogColor(new Color(1,1,1,1));
 

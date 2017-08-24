@@ -6,3 +6,5 @@ vgcore*
 gengine
 /undefined
 *.autosave.scml
+/index*
+
