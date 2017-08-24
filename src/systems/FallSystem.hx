@@ -35,12 +35,19 @@ class FallSystem extends ListIteratingSystem<FallNode>
         var y = node.fall.startY - 981 * t * t * 0.5;
         var p = node.entity.position;
         node.entity.setPosition(new Vector3(p.x, y, p.z));
+
+        if(y < -256)
+        {
+            AudioSystem.instance.playSound("fail");
+            engine.removeEntity(node.entity);
+        }
     }
 
     private function onNodeAdded(node:FallNode)
     {
         node.fall.startY = node.entity.position.y;
         node.fall.time = 0;
+        AudioSystem.instance.playSound("fall");
     }
 
     private function onNodeRemoved(node:FallNode)

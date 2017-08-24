@@ -27,7 +27,9 @@ class AudioSystem extends System
     {
         super();
 
-        add("click");
+        add("fall");
+        add("pick");
+        add("fail");
 
         instance = this;
     }
@@ -57,6 +59,7 @@ class AudioSystem extends System
     {
         var ss = soundSources[nextSoundSourceIndex++];
         ss.play1(sounds[sound]);
+        ss.setGain(0.7);
         nextSoundSourceIndex %= soundSources.length;
     }
 
