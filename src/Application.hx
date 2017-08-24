@@ -40,6 +40,8 @@ class Application
         engine.addSystem(new SpawnSystem(), 0);
         engine.addSystem(new GrowSystem(), 0);
         engine.addSystem(new ShakeSystem(), 0);
+        engine.addSystem(new AudioSystem(), 0);
+
 
         Gengine.getRenderer().getDefaultZone().setFogColor(new Color(1,1,1,1));
 
@@ -61,15 +63,7 @@ class Application
         createSpawner(20, 230);
         createSpawner(-20, 230);
 
-        e = new Entity();
-        musicSource = new SoundSource();
-        musicSource.setSoundType("Music");
-        musicSource.setGain(0.4);
-        e.add(musicSource);
-
-        var s = Gengine.getResourceCache().getSound("ramones.ogg", true);
-        s.setLooped(true);
-        musicSource.play1(s);
+        AudioSystem.instance.playGameMusic();
     }
 
     private static function createSpawner(x, y):Entity
