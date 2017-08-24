@@ -52,14 +52,14 @@ class Application
         engine.addEntity(e);
         e.position = new Vector3(0, 26, 0);
 
-        createSpawner(-100, 180);
-        createSpawner(100, 180);
-        createSpawner(80, 120);
-        createSpawner(-120, 90);
-        createSpawner(-80, 70);
-        createSpawner(50, 70);
-        createSpawner(20, 210);
-        createSpawner(-20, 210);
+        createSpawner(-100, 200);
+        createSpawner(100, 200);
+        createSpawner(80, 150);
+        createSpawner(-120, 120);
+        createSpawner(-80, 100);
+        createSpawner(50, 100);
+        createSpawner(20, 230);
+        createSpawner(-20, 230);
 
         e = new Entity();
         musicSource = new SoundSource();
