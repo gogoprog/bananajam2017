@@ -35,7 +35,7 @@ class SpawnSystem extends ListIteratingSystem<SpawnerNode>
         node.spawner.timeLeft -= dt;
         if(node.spawner.timeLeft <= 0)
         {
-            node.spawner.timeLeft = Math.random() + 5.5;
+            node.spawner.timeLeft = Math.random() * 2 + 3.5;
             spawn(node.entity.position);
         }
     }

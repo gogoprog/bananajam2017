@@ -22,14 +22,18 @@ class ExitSystem extends System
 
 class Application
 {
+    private static var engine:Engine;
+
     public static function init()
     {
         Gengine.setWindowSize(new IntVector2(512, 512));
         Gengine.setWindowTitle("bananajam2017");
     }
 
-    public static function start(engine:Engine)
+    public static function start(_engine:Engine)
     {
+        engine = _engine;
+
         engine.addSystem(new ExitSystem(), 0);
         engine.addSystem(new FallSystem(), 0);
         engine.addSystem(new SpawnSystem(), 0);
@@ -38,28 +42,28 @@ class Application
 
         Gengine.getRenderer().getDefaultZone().setFogColor(new Color(1,1,1,1));
 
+
         var e:Entity;
 
         e = createBackground();
         engine.addEntity(e);
 
-        e = createSpawner();
-        engine.addEntity(e);
-        e.position = new Vector3(-200, 200, 0);
-
-        e = createSpawner();
-        engine.addEntity(e);
-        e.position = new Vector3(200, 200, 0);
-
         e = createTree();
         engine.addEntity(e);
         e.position = new Vector3(0, 26, 0);
+
+        createSpawner(-100, 180);
+        createSpawner(100, 180);
+        createSpawner(80, 120);
+        createSpawner(-120, 90);
     }
 
-    private static function createSpawner():Entity
+    private static function createSpawner(x, y):Entity
     {
         var e = new Entity();
         e.add(new Spawner());
+        e.position = new Vector3(x, y, 0);
+        engine.addEntity(e);
         return e;
     }
 
