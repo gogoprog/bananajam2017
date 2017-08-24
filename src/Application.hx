@@ -84,6 +84,7 @@ class Application
     private static function createTree():Entity
     {
         var e = new Entity();
+        e.name = "tree";
         e.add(new StaticSprite2D());
         e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("banana-tree.png", true));
         e.get(StaticSprite2D).setLayer(1);

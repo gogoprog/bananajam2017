@@ -16,6 +16,7 @@ class GrowSystem extends ListIteratingSystem<GrowerNode>
 {
     private var duration = 2.5;
     private var engine:Engine;
+    private var tree:Entity;
 
     public function new()
     {
@@ -26,6 +27,7 @@ class GrowSystem extends ListIteratingSystem<GrowerNode>
     {
         super.addToEngine(engine);
         this.engine = engine;
+        tree = cast engine.getEntityByName("tree");
     }
 
     private function updateNode(node:GrowerNode, dt:Float):Void
@@ -41,7 +43,20 @@ class GrowSystem extends ListIteratingSystem<GrowerNode>
         {
             var e = node.entity;
             e.remove(Grower);
-            e.add(new Shaker());
+            e.add(new Shaker(1, true, 10, 0.1));
+
+            var treeShaker:Shaker;
+
+            if(tree.has(Shaker))
+            {
+                treeShaker = tree.get(Shaker);
+                treeShaker.duration += 0.15;
+            }
+            else
+            {
+                treeShaker = new Shaker(0.15, false, 0.9, 0.01);
+                tree.add(treeShaker);
+            }
         }
 
     }
