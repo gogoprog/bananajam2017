@@ -35,7 +35,7 @@ class ShakeSystem extends ListIteratingSystem<ShakerNode>
         if(node.shaker.timeLeft < 0)
         {
             node.shaker.timeLeft = node.shaker.interval;
-            node.entity.setRotation2D(node.shaker.intensity * Math.random());
+            node.entity.setRotation2D(node.shaker.intensity * (Math.random() - 0.5));
         }
 
         if(node.shaker.time > node.shaker.duration)

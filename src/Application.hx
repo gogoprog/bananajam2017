@@ -52,7 +52,7 @@ class Application
 
         e = createTree();
         engine.addEntity(e);
-        e.position = new Vector3(0, 26, 0);
+        e.position = new Vector3(0, 26 - 128 * 2.2, 0);
 
         basket = createBasket();
 
@@ -86,8 +86,11 @@ class Application
         var e = new Entity();
         e.name = "tree";
         e.add(new StaticSprite2D());
-        e.get(StaticSprite2D).setSprite(Gengine.getResourceCache().getSprite2D("banana-tree.png", true));
-        e.get(StaticSprite2D).setLayer(1);
+        var ss:StaticSprite2D = e.get(StaticSprite2D);
+        ss.setSprite(Gengine.getResourceCache().getSprite2D("banana-tree.png", true));
+        ss.setLayer(1);
+        ss.setUseHotSpot(true);
+        ss.setHotSpot(new Vector2(0.5, 0));
         e.scale = new Vector3(2.2, 2.2, 1);
         return e;
     }
