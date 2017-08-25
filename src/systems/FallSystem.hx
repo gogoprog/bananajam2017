@@ -73,6 +73,11 @@ class FallSystem extends ListIteratingSystem<FallNode>
                 {
                     basket.add(new Colorizer(0.5, new Color(1, 0, 0, 1)));
                 }
+
+                if(basket.get(Basket).life <= 0)
+                {
+                    Application.gameOver();
+                }
             }
 
             var shaker:Shaker;
@@ -88,10 +93,6 @@ class FallSystem extends ListIteratingSystem<FallNode>
                 basket.add(shaker);
             }
 
-            if(basket.get(Basket).life <= 0)
-            {
-                Application.gameOver();
-            }
         }
     }
 

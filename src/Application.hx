@@ -154,15 +154,13 @@ class Application
 
     public static function gameOver()
     {
-        engine.updateComplete.add(function(){
-            engine.removeAllEntities();
-
+        engine.updateComplete.addOnce(function(){
+            engine.removeEntity(basket);
             engine.removeSystem(engine.getSystem(SpawnSystem));
             engine.removeSystem(engine.getSystem(FallSystem));
             engine.removeSystem(engine.getSystem(GrowSystem));
             engine.removeSystem(engine.getSystem(ShakeSystem));
             pages.showPage(".menu");
             });
-
     }
 }

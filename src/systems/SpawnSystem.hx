@@ -27,6 +27,7 @@ class SpawnSystem extends ListIteratingSystem<SpawnerNode>
     {
         super.addToEngine(engine);
         this.engine = engine;
+
     }
 
     private function updateNode(node:SpawnerNode, dt:Float):Void
