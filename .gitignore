@@ -1,7 +1,6 @@
 *.log
 generated
 callgrind*
-packed-*
 vgcore*
 gengine
 /undefined

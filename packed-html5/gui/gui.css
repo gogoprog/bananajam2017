@@ -1,0 +1,87 @@
+@font-face {
+    font-family: mainFont;
+    src: url(gomarice_rocks.ttf);
+}
+
+body, .pages, .pages > div {
+    position:absolute;
+    top:0;
+    left:0;
+    height:512px;
+    width:512px;
+    padding:0;
+    margin:0;
+}
+
+#body {
+    display:block;
+    position:absolute;
+    font-family: mainFont;
+    font-weight: normal;
+    height:512px;
+    width:512px;
+    padding:0;
+    overflow:hidden;
+    color:white;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+}
+
+#body > div {
+    display:block;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    padding:0;
+    overflow:hidden;
+}
+
+.pages {
+    font-family: mainFont;
+    color:white;
+    font-size:32px;
+}
+
+.menu {
+    color:yellow;
+    font-weight: bold;
+    text-align:center;
+    font-size:32px;
+    text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+}
+
+.title {
+    width:320px;
+    height:420px;
+    display:inline-block;
+    margin-top:64px;
+    margin-bottom:64px;
+    font-size:100px;
+    text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+}
+
+.click {
+  -webkit-animation: blinker 1000ms infinite alternate;
+  animation: blinker 1000ms infinite alternate;
+  color:white;
+  font-size:32px;
+  display:block;
+  width:100%;
+  position:absolute;
+  bottom:10px;
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+}
