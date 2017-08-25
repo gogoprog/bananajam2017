@@ -7,6 +7,10 @@ Entry for the Banana Jam 2017 https://itch.io/jam/banana
 
 [Here](https://gogoprog.github.io/bananajam2017/packed-html5/)
 
+#### Technical information
+
+Made using [gengine](http://gengine.net)
+
 #### Assets credits
 
  * https://opengameart.org/content/fruit-graphics-from-caveexpress
