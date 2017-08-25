@@ -64,6 +64,15 @@ class FallSystem extends ListIteratingSystem<FallNode>
                 AudioSystem.instance.playSound("hurt");
                 basket.get(Basket).life -= 1;
                 (new JQuery(".life")).text(Std.string(basket.get(Basket).life));
+
+                if(basket.has(Colorizer))
+                {
+                    basket.get(Colorizer).time = 0;
+                }
+                else
+                {
+                    basket.add(new Colorizer(0.5, new Color(1, 0, 0, 1)));
+                }
             }
 
             var shaker:Shaker;

@@ -68,6 +68,7 @@ class Application
         engine.addSystem(new ExitSystem(), 0);
         engine.addSystem(new AudioSystem(), 0);
         engine.addSystem(new BasketSystem(), 0);
+        engine.addSystem(new ColorSystem(), 0);
 
         AudioSystem.instance.playGameMusic();
     }
